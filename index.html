@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bilingual Disc Jockey - Your Premier Event DJ</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a1a2e; /* Dark blue background */
+            color: #e0e0e0; /* Light grey text */
+        }
+        .section-heading {
+            color: #00bcd4; /* Vibrant Cyan for headings */
+            font-weight: 700;
+        }
+        .btn-primary {
+            background-color: #00bcd4; /* Vibrant Cyan */
+            color: #ffffff;
+            padding: 16px 32px; /* Increased padding */
+            border-radius: 9999px; /* Fully rounded */
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #4dd0e1; /* Lighter Cyan on hover */
+        }
+        .btn-secondary {
+            border: 2px solid #00bcd4; /* Vibrant Cyan border */
+            color: #00bcd4; /* Vibrant Cyan text */
+            padding: 16px 32px; /* Increased padding */
+            border-radius: 9999px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .btn-secondary:hover {
+            background-color: #00bcd4; /* Vibrant Cyan on hover */
+            color: #ffffff;
+        }
+        .card {
+            background-color: #2a2a4a; /* Slightly lighter dark blue for cards */
+            border-radius: 1rem;
+            padding: 2rem; /* Increased padding */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .nav-link {
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #00bcd4; /* Vibrant Cyan on hover */
+        }
+        /* Custom styles for image overlay */
+        .image-overlay-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.75rem; /* rounded-lg */
+        }
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            cursor: pointer;
+            font-weight: 600;
+            text-align: center;
+            padding: 1rem;
+        }
+        .image-overlay-container:hover .image-overlay {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-purple-900 to-indigo-900 shadow-lg py-4 px-6 md:px-12">
+        <nav class="container mx-auto flex justify-between items-center">
+            <!-- Updated: Very large, bold title for "Bilingual Disc Jockey" -->
+            <a href="#" class="text-5xl md:text-6xl font-extrabold text-white tracking-wider whitespace-nowrap">Bilingual Disc Jockey</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="nav-link text-white text-xl">About Me</a>
+                <a href="#services" class="nav-link text-white text-xl">Services</a>
+                <a href="#gallery" class="nav-link text-white text-xl">Gallery</a>
+                <a href="#testimonials" class="nav-link text-white text-xl">Reviews</a>
+                <a href="#contact" class="nav-link text-white text-xl">Contact</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-white text-3xl focus:outline-none">
+                &#9776; <!-- Hamburger icon -->
+            </button>
+        </nav>
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu-overlay" class="fixed inset-0 bg-gray-900 bg-opacity-95 z-50 hidden flex-col items-center justify-center space-y-8 text-3xl">
+            <button id="close-menu-button" class="absolute top-6 right-6 text-white text-5xl">&times;</button>
+            <a href="#about" class="nav-link text-white" onclick="toggleMobileMenu()">About Me</a>
+            <a href="#services" class="nav-link text-white" onclick="toggleMobileMenu()">Services</a>
+            <a href="#gallery" class="nav-link text-white" onclick="toggleMobileMenu()">Gallery</a>
+            <a href="#testimonials" class="nav-link text-white" onclick="toggleMobileMenu()">Reviews</a>
+            <a href="#contact" class="nav-link text-white" onclick="toggleMobileMenu()">Contact</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center text-center bg-cover bg-center" style="background-image: url('https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010458.jpg');">
+        <div class="absolute inset-0 bg-black opacity-70"></div>
+        <div class="relative z-10 p-8 rounded-lg max-w-4xl mx-auto">
+            <!-- Updated: Title split into two lines -->
+            <h1 class="text-6xl md:text-8xl font-extrabold text-white leading-tight animate-pulse">
+                Bilingual Disc Jockey<br>
+                <span class="text-4xl md:text-6xl font-semibold">music for an unforgettable event</span>
+            </h1>
+            <!-- Updated: New, engaging introductory sentence -->
+            <p class="text-xl md:text-2xl text-gray-200 mb-10 mt-6 leading-relaxed">
+                Felipe Leon, A.K.A. Bilingual Disc Jockey, is a maestro with over three decades of experience, renowned for seamlessly blending music that moves your body, mind, and soul. Clients call him "A Musical Magician with a Mastermind," orchestrating celebrations that become truly unforgettable, even life-changing. With a professional yet friendly demeanor and the ear of a musical muse, Felipe effortlessly selects the perfect sensational song just for you. Don't just take our word for it; make an inquiry or book Bilingual Disc Jockey for your next event and stamp your own magical memories and meaningful moments in time.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-6 sm:space-y-0 sm:space-x-8">
+                <a href="#contact" class="btn-primary text-2xl">Get a Free Quote</a>
+                <a href="#services" class="btn-secondary text-2xl">Explore My Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="py-20 px-6 md:px-12 bg-gradient-to-r from-gray-900 to-black">
+        <div class="container mx-auto max-w-5xl text-center">
+            <h2 class="text-5xl section-heading mb-10">About Felipe Leon, Bilingual Disc Jockey</h2>
+            <div class="flex flex-col md:flex-row items-center md:space-x-10">
+                <div class="md:w-1/3 mb-10 md:mb-0">
+                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010457.jpg" alt="Felipe Leon, Bilingual Disc Jockey, holding microphone" class="w-full h-auto object-cover rounded-lg shadow-xl">
+                </div>
+                <div class="md:w-2/3 text-left">
+                    <p class="text-xl text-gray-300 leading-relaxed mb-8">
+                        With **over 30 years of experience** as an independent DJ, I, **Felipe Leon**, bring unparalleled passion and professionalism to every event. My expertise lies in creating vibrant atmospheres that **entice guests to get up and dance**, ensuring your event is truly unforgettable.
+                    </p>
+                    <p class="text-xl text-gray-300 leading-relaxed">
+                        I will meet with you and provide suggestions that will maximize the success of your special event. As a **Bilingual Disc Jockey**, I excel at providing music and MC services in both English and Spanish, making me the perfect choice for diverse audiences. My extensive music library covers **all genres upon request** within these languages. I'm committed to making your special occasion truly unforgettable.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 px-6 md:px-12 bg-gradient-to-r from-black to-purple-900">
+        <div class="container mx-auto">
+            <h2 class="text-5xl section-heading text-center mb-16">My Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Service Card 1: Weddings -->
+                <div class="card p-8 flex flex-col items-center text-center">
+                    <h3 class="text-3xl font-semibold text-white mb-4">Weddings</h3>
+                    <p class="text-xl text-gray-300 mb-6">
+                        For your wedding day, I collaborate closely with you and your guests to curate the perfect soundtrack. I'll meet with you, offer expert suggestions, and together we'll ensure every musical moment is just right. My goal is to maximize the success of your special celebration, providing a seamless, elegant ambiance and an unforgettable experience.
+                    </p>
+                    <ul class="text-lg text-gray-400 text-left list-disc list-inside mb-6">
+                        <li>Customizable Playlists (English & Spanish, all genres upon request)</li>
+                        <li>Professional MC Services: Announcements in English, Spanish, or both & I guide the smooth flow of your special event.</li>
+                        <li>High-Quality Sound & Lighting</li>
+                        <li>Personalized Consultation & Planning</li>
+                        <li>Wonderful Experience Guaranteed: Exceeding expectations and making sure everyone has a good time.</li>
+                    </ul>
+                    <a href="#contact" class="btn-primary text-2xl mt-auto">Book Your Wedding</a>
+                </div>
+
+                <!-- Service Card 2: Parties & Celebrations -->
+                <div class="card p-8 flex flex-col items-center text-center">
+                    <h3 class="text-3xl font-semibold text-white mb-4">Parties & Celebrations</h3>
+                    <p class="text-xl text-gray-300 mb-6">
+                        Birthdays, anniversaries, graduations, Quinceañeras, or any private event – I bring the energy and the perfect mix to **inspire your guests to hit the dance floor**.
+                    </p>
+                    <ul class="text-lg text-gray-400 text-left list-disc list-inside mb-6">
+                        <li>Music Entertainment Tailored to Your Liking</li>
+                        <li>Extensive Music Library (English & Spanish, all genres upon request)</li>
+                        <li>State-of-the-Art Sound</li>
+                        <li>Flexible & Customized Service</li>
+                        <li>Dynamic MC Services: Keeping the energy high and guiding your event's flow.</li>
+                    </ul>
+                    <a href="#contact" class="btn-primary text-2xl mt-auto">Plan Your Party</a>
+                </div>
+
+                <!-- Service Card 3: Corporate Events -->
+                <div class="card p-8 flex flex-col items-center text-center">
+                    <h3 class="text-3xl font-semibold text-white mb-4">Corporate Events</h3>
+                    <p class="text-xl text-gray-300 mb-6">
+                        For your company's success, I provide professional background music or a full dance party. Perfect for holiday parties, product launches, and team-building events.
+                    </p>
+                    <ul class="text-lg text-gray-400 text-left list-disc list-inside mb-6">
+                        <li>Sophisticated Playlists (English & Spanish, all genres upon request)</li>
+                        <li>Flawless Audio Delivery</li>
+                        <li>Reliable & Punctual Service</li>
+                        <li>Professional Setup</li>
+                    </ul>
+                    <a href="#contact" class="btn-primary text-2xl mt-auto">Host a Corporate Event</a>
+                </div>
+
+                <!-- Add more service cards as needed -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 px-6 md:px-12 bg-gradient-to-r from-purple-900 to-indigo-900">
+        <div class="container mx-auto">
+            <h2 class="text-5xl section-heading text-center mb-16">Memories from My Events</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <!-- Image 1: Wedding ceremony outdoors -->
+                <div class="image-overlay-container rounded-lg shadow-lg">
+                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010476.jpg" alt="Outdoor Wedding Ceremony with DJ Setup" class="w-full h-auto object-cover rounded-lg">
+                    <div class="image-overlay">Beautiful Outdoor Wedding Ceremony</div>
+                </div>
+                <!-- Image 2: Bride and groom dancing indoors -->
+                <div class="image-overlay-container rounded-lg shadow-lg">
+                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010472.jpg" alt="Bride and Groom First Dance Indoors" class="w-full h-auto object-cover rounded-lg">
+                    <div class="image-overlay">First Dance Magic</div>
+                </div>
+                <!-- Image 3: Bride and groom hugging/dancing -->
+                <div class="image-overlay-container rounded-lg shadow-lg">
+                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010474.jpg" alt="Happy Couple Dancing at Wedding Reception" class="w-full h-auto object-cover rounded-lg">
+                    <div class="image-overlay">Joyful Wedding Moments</div>
+                </div>
+                <!-- Image 4: Dancefloor with many people, DJ setup visible -->
+                <div class="image-overlay-container rounded-lg shadow-lg">
+                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010473.jpg" alt="Energetic Dance Floor with DJ Setup" class="w-full h-auto object-cover rounded-lg">
+                    <div class="image-overlay">Packed Dance Floor Fun!</div>
+                </div>
+                <!-- Image 5: Outdoor dancing, sunset -->
+                <div class="image-overlay-container rounded-lg shadow-lg">
+                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010475.jpg" alt="Outdoor Party Dancing at Sunset" class="w-full h-auto object-cover rounded-lg">
+                    <div class="image-overlay">Sunset Dance Party</div>
+                </div>
+                <!-- Image 6: Groom dancing for bride -->
+                <div class="image-overlay-container rounded-lg shadow-lg">
+                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010477.jpg" alt="Groom Entertaining Bride at Wedding" class="w-full h-auto object-cover rounded-lg">
+                    <div class="image-overlay">Groom's Special Dance</div>
+                </div>
+                <!-- Image 7: Party with lights, DJ equipment on right -->
+                <div class="image-overlay-container rounded-lg shadow-lg">
+                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010469.jpg" alt="Party with Dynamic Lighting and DJ Equipment" class="w-full h-auto object-cover rounded-lg">
+                    <div class="image-overlay">Vibrant Party Atmosphere</div>
+                </div>
+                <!-- Image 8: Outdoor dancing, daytime -->
+                <div class="image-overlay-container rounded-lg shadow-lg">
+                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010478.jpg" alt="Outdoor Celebration with Guests Dancing" class="w-full h-auto object-cover rounded-lg">
+                    <div class="image-overlay">Daytime Outdoor Fun</div>
+                </div>
+                <div class="image-overlay-container rounded-lg shadow-lg">
+                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010470.jpg" alt="Indoor Dance Party with Blue Lighting" class="w-full h-auto object-cover rounded-lg">
+                    <div class="image-overlay">Electrifying Indoor Dance Floor</div>
+                </div>
+                <div class="image-overlay-container rounded-lg shadow-lg">
+                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010471.jpg" alt="Kids Dancing Happily at Event" class="w-full h-auto object-cover rounded-lg">
+                    <div class="image-overlay">Kids Having a Blast!</div>
+                </div>
+                <!-- New 10 Images -->
+                <div class="image-overlay-container rounded-lg shadow-lg">
+                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010468.jpg" alt="Large Ballroom Event with Dance Circle" class="w-full h-auto object-cover rounded-lg">
+                    <div class="image-overlay">Grand Ballroom Celebration</div>
+                </div>
+                <div class="image-overlay-container rounded-lg shadow-lg">
+                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010466.jpg" alt="Lively Dance Floor with Party Lights" class="w-full h-auto object-cover rounded-lg">
+                    <div class="image-overlay">High-Energy Dance Party</div>
+                </div>
+                <div class="image-overlay-container rounded-lg shadow-lg">
+                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010465.jpg" alt="Bride Holding Bouquet on Dance Floor" class="w-full h-auto object-cover rounded-lg">
+                    <div class="image-overlay">Happy Bride on the Dance Floor</div>
+                </div>
+                <div class="image-overlay-container rounded-lg shadow-lg">
+                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010467.jpg" alt="Couple Dancing at Wedding Reception" class="w-full h-auto object-cover rounded-lg">
+                    <div class="image-overlay">Romantic Wedding Dance</div>
+                </div>
+                <div class="image-overlay-container rounded-lg shadow-lg">
+                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010460.jpg" alt="Guest Being Lifted on Dance Floor" class="w-full h-auto object-cover rounded-lg">
+                    <div class="image-overlay">Exciting Party Moments</div>
+                </div>
+                <div class="image-overlay-container rounded-lg shadow-lg">
+                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010459.jpg" alt="Guests Dancing and Having Fun Indoors" class="w-full h-auto object-cover rounded-lg">
+                    <div class="image-overlay">Guests Enjoying the Music</div>
+                </div>
+                <div class="image-overlay-container rounded-lg shadow-lg">
+                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010461.jpg" alt="Two Women Dancing and Laughing" class="w-full h-auto object-cover rounded-lg">
+                    <div class="image-overlay">Friends on the Dance Floor</div>
+                </div>
+                <div class="image-overlay-container rounded-lg shadow-lg">
+                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010463.jpg" alt="People Dancing in a Lively Indoor Setting" class="w-full h-auto object-cover rounded-lg">
+                    <div class="image-overlay">Vibrant Indoor Party</div>
+                </div>
+                <div class="image-overlay-container rounded-lg shadow-lg">
+                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010464.jpg" alt="Guests Dancing with Hands Up" class="w-full h-auto object-cover rounded-lg">
+                    <div class="image-overlay">Hands in the Air!</div>
+                </div>
+                <div class="image-overlay-container rounded-lg shadow-lg">
+                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010462.jpg" alt="Guests Dancing and Enjoying the Music" class="w-full h-auto object-cover rounded-lg">
+                    <div class="image-overlay">Joyful Dance Moves</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 px-6 md:px-12 bg-gradient-to-r from-purple-900 to-indigo-900">
+        <div class="container mx-auto max-w-5xl text-center">
+            <h2 class="text-5xl section-heading mb-10">What My Clients Say</h2>
+            <p class="text-xl text-gray-300 mb-10">
+                I pride myself on delivering exceptional experiences. Hear directly from my happy clients!
+            </p>
+            <a href="https://www.yelp.com/biz/bilingual-disc-jockey-reno-2" target="_blank" class="btn-primary text-2xl inline-flex items-center">
+                <svg class="w-8 h-8 mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM6.5 9a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm7 0a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm-5.5 5.5a3.5 3.5 0 105 0 3.5 3.5 0 00-5 0z" clip-rule="evenodd"></path></svg>
+                Read My Reviews on Yelp!
+            </a>
+            <p class="text-base text-gray-400 mt-6 text-center">
+                (You'll find many more positive reviews and testimonials directly on my Yelp page.)
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Me Section -->
+    <section id="contact" class="py-20 px-6 md:px-12 bg-gradient-to-r from-black to-purple-900">
+        <div class="container mx-auto max-w-5xl">
+            <h2 class="text-5xl section-heading text-center mb-16">Get in Touch!</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="card p-10">
+                    <h3 class="text-3xl font-semibold text-white mb-8">Request a Quote or Ask a Question</h3>
+                    <!-- IMPORTANT: Replace "YOUR_FORMSPREE_ENDPOINT_HERE" with your actual Formspree.io endpoint -->
+                    <form action="YOUR_FORMSPREE_ENDPOINT_HERE" method="POST" class="space-y-6">
+                        <div>
+                            <label for="first_name" class="block text-gray-300 text-base font-bold mb-2">First Name:</label>
+                            <input type="text" id="first_name" name="First Name" required
+                                   class="shadow appearance-none border rounded-lg w-full py-4 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-200 text-lg">
+                        </div>
+                        <div>
+                            <label for="last_name" class="block text-gray-300 text-base font-bold mb-2">Last Name:</label>
+                            <input type="text" id="last_name" name="Last Name" required
+                                   class="shadow appearance-none border rounded-lg w-full py-4 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-200 text-lg">
+                        </div>
+                        <div>
+                            <label for="event_type_form" class="block text-gray-300 text-base font-bold mb-2">Type of Event:</label>
+                            <input type="text" id="event_type_form" name="Event Type" placeholder="e.g., Wedding, Quinceañera, Birthday" required
+                                   class="shadow appearance-none border rounded-lg w-full py-4 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-200 text-lg">
+                        </div>
+                        <div>
+                            <label for="event_date" class="block text-gray-300 text-base font-bold mb-2">Date of Event:</label>
+                            <input type="date" id="event_date" name="Event Date" required
+                                   class="shadow appearance-none border rounded-lg w-full py-4 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-200 text-lg">
+                        </div>
+                        <div>
+                            <label class="block text-gray-300 text-base font-bold mb-2">Preferred Contact Method:</label>
+                            <div class="mt-2 flex flex-wrap gap-6">
+                                <label class="inline-flex items-center text-lg">
+                                    <input type="radio" class="form-radio text-00bcd4" name="Preferred Contact Method" value="Text" required>
+                                    <span class="ml-2 text-gray-300">Text</span>
+                                </label>
+                                <label class="inline-flex items-center text-lg">
+                                    <input type="radio" class="form-radio text-00bcd4" name="Preferred Contact Method" value="Call">
+                                    <span class="ml-2 text-gray-300">Call</span>
+                                </label>
+                                <label class="inline-flex items-center text-lg">
+                                    <input type="radio" class="form-radio text-00bcd4" name="Preferred Contact Method" value="Email">
+                                    <span class="ml-2 text-gray-300">Email</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="preferred_contact_info" class="block text-gray-300 text-base font-bold mb-2">Preferred Contact Information (Phone or Email):</label>
+                            <input type="text" id="preferred_contact_info" name="Preferred Contact Information" placeholder="e.g., (555) 123-4567 or your@email.com" required
+                                   class="shadow appearance-none border rounded-lg w-full py-4 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-200 text-lg">
+                        </div>
+                        <div>
+                            <label for="location" class="block text-gray-300 text-base font-bold mb-2">Event Location (City, State):</label>
+                            <input type="text" id="location" name="Event Location" placeholder="e.g., Reno, NV" required
+                                   class="shadow appearance-none border rounded-lg w-full py-4 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-200 text-lg">
+                        </div>
+                        <!-- New: Event Setting (Optional) -->
+                        <div>
+                            <label class="block text-gray-300 text-base font-bold mb-2">Event Setting (Optional):</label>
+                            <div class="mt-2 flex flex-wrap gap-6">
+                                <label class="inline-flex items-center text-lg">
+                                    <input type="radio" class="form-radio text-00bcd4" name="Event Setting" value="Indoor">
+                                    <span class="ml-2 text-gray-300">Indoor</span>
+                                </label>
+                                <label class="inline-flex items-center text-lg">
+                                    <input type="radio" class="form-radio text-00bcd4" name="Event Setting" value="Outdoor">
+                                    <span class="ml-2 text-gray-300">Outdoor</span>
+                                </label>
+                                <label class="inline-flex items-center text-lg">
+                                    <input type="radio" class="form-radio text-00bcd4" name="Event Setting" value="Both">
+                                    <span class="ml-2 text-gray-300">Both</span>
+                                </label>
+                            </div>
+                        </div>
+                        <!-- Updated: Services Needed (Optional) -->
+                        <div>
+                            <label class="block text-gray-300 text-base font-bold mb-2">(Optional) - DJ Services Are Needed For:</label>
+                            <div class="mt-2 flex flex-wrap gap-6">
+                                <label class="inline-flex items-center text-lg">
+                                    <input type="radio" class="form-radio text-00bcd4" name="Services Needed" value="Ceremony">
+                                    <span class="ml-2 text-gray-300">The Ceremony Only</span>
+                                </label>
+                                <label class="inline-flex items-center text-lg">
+                                    <input type="radio" class="form-radio text-00bcd4" name="Services Needed" value="Reception">
+                                    <span class="ml-2 text-gray-300">The Reception Only</span>
+                                </label>
+                                <label class="inline-flex items-center text-lg">
+                                    <input type="radio" class="form-radio text-00bcd4" name="Services Needed" value="Both">
+                                    <span class="ml-2 text-gray-300">Both The Ceremony & Reception</span>
+                                </label>
+                            </div>
+                        </div>
+                        <!-- New: Event Duration (Optional) -->
+                        <div>
+                            <label for="event_duration" class="block text-gray-300 text-base font-bold mb-2">Event Duration (Optional):</label>
+                            <input type="text" id="event_duration" name="Event Duration" placeholder="e.g., 4 hours, 6 hours"
+                                   class="shadow appearance-none border rounded-lg w-full py-4 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-200 text-lg">
+                        </div>
+                        <!-- Updated: Message Field (required) -->
+                        <div>
+                            <label for="message" class="block text-gray-300 text-base font-bold mb-2">Message:</label>
+                            <textarea id="message" name="Message" rows="6" placeholder="Tell me more about your event and how I can help make it special!" required
+                                      class="shadow appearance-none border rounded-lg w-full py-4 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-200 text-lg"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary w-full text-2xl">Send Message</button>
+                    </form>
+                </div>
+                <!-- Direct Contact Info -->
+                <div class="card p-10 md:mt-16">
+                    <h3 class="text-3xl font-semibold text-white mb-8">Direct Contact Information</h3>
+                    <p class="text-xl text-gray-300 leading-relaxed mb-6">
+                        Prefer to call or text directly? You can reach me at:
+                    </p>
+                    <p class="text-3xl font-bold text-white mb-4">
+                        <a href="tel:775-772-4476" class="text-white hover:text-00bcd4 transition-colors duration-300">775-772-4476</a>
+                    </p>
+                    <p class="text-xl text-gray-300 leading-relaxed mb-6">
+                        For email inquiries, send a message to:
+                    </p>
+                    <p class="text-3xl font-bold text-white mb-4">
+                        <a href="mailto:bilingualdj@earthlink.net" class="text-white hover:text-00bcd4 transition-colors duration-300">bilingualdj@earthlink.net</a>
+                    </p>
+                    <p class="text-lg text-gray-400 leading-relaxed">
+                        (Please mention the date and type of event in your message to help me respond quickly!)
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-gray-900 to-black py-12 px-6 md:px-12 text-center text-gray-400 text-lg">
+        <div class="container mx-auto max-w-5xl">
+            <p>&copy; 2024 Bilingual Disc Jockey. All Rights Reserved.</p>
+            <div class="mt-6 flex justify-center">
+                <!-- Removed Facebook Link, kept only Yelp Link -->
+                <a href="https://www.yelp.com/biz/bilingual-disc-jockey-reno-2" target="_blank" class="text-white hover:text-00bcd4 transition-colors duration-300">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM6.5 9a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm7 0a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm-5.5 5.5a3.5 3.5 0 105 0 3.5 3.5 0 00-5 0z"></path></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript for Mobile Menu -->
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMenuButton = document.getElementById('close-menu-button');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+
+        function toggleMobileMenu() {
+            if (mobileMenuOverlay.classList.contains('hidden')) {
+                mobileMenuOverlay.classList.remove('hidden');
+            } else {
+                mobileMenuOverlay.classList.add('hidden');
+            }
+        }
+
+        mobileMenuButton.addEventListener('click', toggleMobileMenu);
+        closeMenuButton.addEventListener('click', toggleMobileMenu);
+    </script>
+</body>
+</html>
