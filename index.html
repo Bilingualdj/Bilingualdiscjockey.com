@@ -1,3 +1,28 @@
+<!--
+This is a complete HTML, CSS (Tailwind CSS), and JavaScript file for a DJ business website.
+It contains all the original sections and functionality, with the AI-powered features
+completely removed.
+
+Sections included:
+- Header (Navigation with very large, bold title)
+- Hero (Main Call to Action with background image, emphasizing English/Spanish, title split into two lines, and an engaging introductory sentence)
+- About Me (With your photo, name, emphasizing English/Spanish, and consulting detail)
+- Services (Updated wording, focused on English/Spanish + all genres, enhanced MC details)
+- Gallery (All 20 images provided by user, with GitHub Pages placeholder URLs)
+- Testimonials (Updated Yelp link)
+- Contact Me (Form with all original fields and direct contact info)
+- Footer (Facebook and Yelp links)
+
+IMPORTANT INSTRUCTIONS FOR IMAGES:
+The image URLs below are placeholders. You MUST replace 'your-username' with your actual GitHub username
+and 'bilingual-dj-site' with the name of your GitHub repository where you upload these files.
+For example, if your GitHub username is 'felipe-dj' and your repository is 'my-dj-website',
+a URL like 'https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010458.jpg'
+would become 'https://raw.githubusercontent.com/felipe-dj/my-dj-website/main/images/1000010458.jpg'.
+
+For the contact form to send emails, you MUST use a third-party "form-to-email" service like Formspree.io or Netlify Forms. This static HTML file only provides the frontend structure. Replace "YOUR_FORMSPREE_ENDPOINT_HERE" with your actual Formspree.io endpoint.
+Replace "YOUR_FACEBOOK_URL" with your actual Facebook profile/page URL.
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -330,8 +355,8 @@
                 <!-- Contact Form -->
                 <div class="card p-10">
                     <h3 class="text-3xl font-semibold text-white mb-8">Request a Quote or Ask a Question</h3>
-                    <!-- IMPORTANT: Replace "YOUR_FORMSPREE_ENDPOINT_HERE" with your actual Formspree.io endpoint -->
-                    <form action="YOUR_FORMSPREE_ENDPOINT_HERE" method="POST" class="space-y-6">
+                    <!-- Formspree Endpoint has been updated here -->
+                    <form action="https://formspree.io/f/xrblwlop" method="POST" class="space-y-6">
                         <div>
                             <label for="first_name" class="block text-gray-300 text-base font-bold mb-2">First Name:</label>
                             <input type="text" id="first_name" name="First Name" required
@@ -411,77 +436,68 @@
                                 </label>
                                 <label class="inline-flex items-center text-lg">
                                     <input type="radio" class="form-radio text-00bcd4" name="Services Needed" value="Both">
-                                    <span class="ml-2 text-gray-300">Both The Ceremony & Reception</span>
+                                    <span class="ml-2 text-gray-300">Both</span>
                                 </label>
                             </div>
                         </div>
-                        <!-- New: Event Duration (Optional) -->
+                        <!-- Additional fields (optional) -->
                         <div>
-                            <label for="event_duration" class="block text-gray-300 text-base font-bold mb-2">Event Duration (Optional):</label>
-                            <input type="text" id="event_duration" name="Event Duration" placeholder="e.g., 4 hours, 6 hours"
-                                   class="shadow appearance-none border rounded-lg w-full py-4 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-200 text-lg">
+                            <label for="message" class="block text-gray-300 text-base font-bold mb-2">Message or Other Information (optional):</label>
+                            <textarea id="message" name="Message" rows="4" class="shadow appearance-none border rounded-lg w-full py-4 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-200 text-lg"></textarea>
                         </div>
-                        <!-- Updated: Message Field (required) -->
-                        <div>
-                            <label for="message" class="block text-gray-300 text-base font-bold mb-2">Message:</label>
-                            <textarea id="message" name="Message" rows="6" placeholder="Tell me more about your event and how I can help make it special!" required
-                                      class="shadow appearance-none border rounded-lg w-full py-4 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-200 text-lg"></textarea>
+                        <div class="text-center">
+                            <button type="submit" class="btn-primary text-2xl">Send Your Inquiry</button>
                         </div>
-                        <button type="submit" class="btn-primary w-full text-2xl">Send Message</button>
                     </form>
                 </div>
-                <!-- Direct Contact Info -->
-                <div class="card p-10 md:mt-16">
-                    <h3 class="text-3xl font-semibold text-white mb-8">Direct Contact Information</h3>
-                    <p class="text-xl text-gray-300 leading-relaxed mb-6">
-                        Prefer to call or text directly? You can reach me at:
-                    </p>
-                    <p class="text-3xl font-bold text-white mb-4">
-                        <a href="tel:775-772-4476" class="text-white hover:text-00bcd4 transition-colors duration-300">775-772-4476</a>
-                    </p>
-                    <p class="text-xl text-gray-300 leading-relaxed mb-6">
-                        For email inquiries, send a message to:
-                    </p>
-                    <p class="text-3xl font-bold text-white mb-4">
-                        <a href="mailto:bilingualdj@earthlink.net" class="text-white hover:text-00bcd4 transition-colors duration-300">bilingualdj@earthlink.net</a>
-                    </p>
-                    <p class="text-lg text-gray-400 leading-relaxed">
-                        (Please mention the date and type of event in your message to help me respond quickly!)
-                    </p>
+                <!-- Contact Information -->
+                <div class="card p-10 flex flex-col justify-center">
+                    <h3 class="text-3xl font-semibold text-white mb-8">Contact Information</h3>
+                    <div class="space-y-6 text-xl">
+                        <div class="flex items-center">
+                            <span class="text-00bcd4 mr-4 text-3xl">&#9993;</span>
+                            <span class="text-gray-300">bilingualdjfelipe@gmail.com</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-00bcd4 mr-4 text-3xl">&#9742;</span>
+                            <span class="text-gray-300">(775) 432-8434</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-00bcd4 mr-4 text-3xl">&#x1F4CD;</span>
+                            <span class="text-gray-300">Reno, NV, USA</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gradient-to-r from-gray-900 to-black py-12 px-6 md:px-12 text-center text-gray-400 text-lg">
-        <div class="container mx-auto max-w-5xl">
-            <p>&copy; 2024 Bilingual Disc Jockey. All Rights Reserved.</p>
-            <div class="mt-6 flex justify-center">
-                <!-- Removed Facebook Link, kept only Yelp Link -->
-                <a href="https://www.yelp.com/biz/bilingual-disc-jockey-reno-2" target="_blank" class="text-white hover:text-00bcd4 transition-colors duration-300">
-                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM6.5 9a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm7 0a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm-5.5 5.5a3.5 3.5 0 105 0 3.5 3.5 0 00-5 0z"></path></svg>
+    <footer class="bg-gray-800 py-8 text-center">
+        <div class="container mx-auto px-6">
+            <p class="text-gray-400 mb-4">&copy; 2024 Bilingual Disc Jockey. All Rights Reserved.</p>
+            <div class="flex justify-center space-x-6">
+                <!-- Facebook Link (replace with your URL) -->
+                <a href="https://www.facebook.com/bilingualdiscjockey" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 8.12 8.438 8.879V14h-2v-2h2v-2c0-2.433 1.21-3.5 3.5-3.5 1.51 0 2.458.74 2.825 1.05v1.95h-1.5c-1.157 0-1.875.766-1.875 1.833V12h3.333l-.667 2h-2.666v6.879C18.343 20.12 22 16.991 22 12z"/></svg>
+                </a>
+                <!-- Yelp Link -->
+                <a href="https://www.yelp.com/biz/bilingual-disc-jockey-reno-2" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.82 10.99c.39-2.07 1.88-3.79 3.53-4.14-1.28-1.58-3.66-2.5-6.19-2.28-4.45.38-7.98 4.2-7.98 8.83 0 4.9 4.39 9.17 10 9.17 5.16 0 9.61-3.65 9.98-8.83 0-.15-.02-.3-.04-.45-.48-2.62-2.14-5.22-4.19-6.44-1.92-1.17-4.13-1.66-6.3-1.42.06.31.22.65.51 1.05.51.69 1.04 1.4.3 2.15zM12 18.2c-2.34 0-4.6-1.54-5.2-3.8-1.07-4.2.3-7.92 2.82-10.16.8.53 1.63 1.02 2.45 1.54 1.52.96 2.8 2.2 3.8 3.66.75 1.08 1.15 2.16 1.12 3.3.4.1.8.21 1.18.35-.45.92-1.3 1.96-2.5 3.06-1.34 1.25-3.08 2.2-4.96 2.3-1.5.09-2.95-.3-4.22-.97.23 2.44 1.48 4.1 3.5 5.1-1.3-.28-2.47-1.12-3.4-2.27.7.02 1.4-.04 2.1-.2 1.6-.45 2.8-1.84 3.7-3.6z"/></svg>
                 </a>
             </div>
         </div>
     </footer>
-    
-    <!-- JavaScript for Mobile Menu -->
     <script>
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const closeMenuButton = document.getElementById('close-menu-button');
-        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
-
+        // Function to toggle mobile menu visibility
         function toggleMobileMenu() {
-            if (mobileMenuOverlay.classList.contains('hidden')) {
-                mobileMenuOverlay.classList.remove('hidden');
-            } else {
-                mobileMenuOverlay.classList.add('hidden');
-            }
+            const mobileMenu = document.getElementById('mobile-menu-overlay');
+            mobileMenu.classList.toggle('hidden');
         }
 
-        mobileMenuButton.addEventListener('click', toggleMobileMenu);
-        closeMenuButton.addEventListener('click', toggleMobileMenu);
+        // Event listeners for opening and closing the mobile menu
+        document.getElementById('mobile-menu-button').addEventListener('click', toggleMobileMenu);
+        document.getElementById('close-menu-button').addEventListener('click', toggleMobileMenu);
     </script>
 </body>
 </html>
