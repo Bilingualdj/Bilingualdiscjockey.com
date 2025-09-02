@@ -52,32 +52,44 @@
         .nav-link:hover {
             color: #00bcd4; /* Vibrant Cyan on hover */
         }
-        /* Custom styles for image overlay */
-        .image-overlay-container {
-            position: relative;
-            overflow: hidden;
-            border-radius: 0.75rem; /* rounded-lg */
-        }
-        .image-overlay {
-            position: absolute;
-            top: 0;
+
+        /* --- Fullscreen Modal Styles --- */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
             left: 0;
+            top: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            color: white;
-            display: flex;
+            background-color: rgba(0, 0, 0, 0.9);
             justify-content: center;
             align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            cursor: pointer;
-            font-weight: 600;
-            text-align: center;
-            padding: 1rem;
+            flex-direction: column;
         }
-        .image-overlay-container:hover .image-overlay {
-            opacity: 1;
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90%;
+            object-fit: contain;
+        }
+        .modal-caption {
+            color: #ccc;
+            font-size: 1.25rem;
+            margin-top: 1rem;
+            text-align: center;
+        }
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -111,7 +123,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="relative h-screen flex items-center justify-center text-center bg-cover bg-center" style="background-image: url('https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010458.jpg');">
+    <section class="relative h-screen flex items-center justify-center text-center bg-cover bg-center" style="background-image: url('https://raw.githubusercontent.com/Bilingualdj/Bilingualdiscjockey.com/main/images/20544044_xl.jpg');">
         <div class="absolute inset-0 bg-black opacity-70"></div>
         <div class="relative z-10 p-4 sm:p-8 rounded-lg max-w-4xl mx-auto">
             <!-- UPDATED: Responsive font sizes -->
@@ -136,7 +148,9 @@
             <h2 class="text-3xl md:text-5xl section-heading mb-8 md:mb-10">About Felipe Leon, Bilingual Disc Jockey</h2>
             <div class="flex flex-col md:flex-row items-center md:space-x-10">
                 <div class="md:w-1/3 mb-8 md:mb-0">
-                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010457.jpg" alt="Felipe Leon, Bilingual Disc Jockey, holding microphone" class="w-full h-auto object-cover rounded-lg shadow-xl">
+                    <!-- Image of my father in the white tux holding the mic -->
+                    <img src="https://raw.githubusercontent.com/Bilingualdj/Bilingualdiscjockey.com/main/images/picture of myself.JPG" alt="Felipe Leon, Bilingual Disc Jockey, holding microphone"
+                         class="w-full h-auto object-cover rounded-lg shadow-xl cursor-pointer about-me-image">
                 </div>
                 <div class="md:w-2/3 text-left">
                     <p class="text-base md:text-xl text-gray-300 leading-relaxed mb-6">
@@ -201,8 +215,6 @@
                     </ul>
                     <a href="#contact" class="btn-primary text-lg sm:text-xl mt-auto">Host a Corporate Event</a>
                 </div>
-
-                <!-- Add more service cards as needed -->
             </div>
         </div>
     </section>
@@ -212,95 +224,27 @@
         <div class="container mx-auto">
             <h2 class="text-3xl md:text-5xl section-heading text-center mb-10 md:mb-16">Memories from My Events</h2>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
-                <!-- All image overlay containers should use the same responsive grid layout -->
-                <div class="image-overlay-container rounded-lg shadow-lg">
-                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010476.jpg" alt="Outdoor Wedding Ceremony with DJ Setup" class="w-full h-full object-cover rounded-lg">
-                    <div class="image-overlay">Beautiful Outdoor Wedding Ceremony</div>
-                </div>
-                <!-- Image 2: Bride and groom dancing indoors -->
-                <div class="image-overlay-container rounded-lg shadow-lg">
-                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010472.jpg" alt="Bride and Groom First Dance Indoors" class="w-full h-full object-cover rounded-lg">
-                    <div class="image-overlay">First Dance Magic</div>
-                </div>
-                <!-- Image 3: Bride and groom hugging/dancing -->
-                <div class="image-overlay-container rounded-lg shadow-lg">
-                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010474.jpg" alt="Happy Couple Dancing at Wedding Reception" class="w-full h-full object-cover rounded-lg">
-                    <div class="image-overlay">Joyful Wedding Moments</div>
-                </div>
-                <!-- Image 4: Dancefloor with many people, DJ setup visible -->
-                <div class="image-overlay-container rounded-lg shadow-lg">
-                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010473.jpg" alt="Energetic Dance Floor with DJ Setup" class="w-full h-full object-cover rounded-lg">
-                    <div class="image-overlay">Packed Dance Floor Fun!</div>
-                </div>
-                <!-- Image 5: Outdoor dancing, sunset -->
-                <div class="image-overlay-container rounded-lg shadow-lg">
-                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010475.jpg" alt="Outdoor Party Dancing at Sunset" class="w-full h-full object-cover rounded-lg">
-                    <div class="image-overlay">Sunset Dance Party</div>
-                </div>
-                <!-- Image 6: Groom dancing for bride -->
-                <div class="image-overlay-container rounded-lg shadow-lg">
-                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010477.jpg" alt="Groom Entertaining Bride at Wedding" class="w-full h-full object-cover rounded-lg">
-                    <div class="image-overlay">Groom's Special Dance</div>
-                </div>
-                <!-- Image 7: Party with lights, DJ equipment on right -->
-                <div class="image-overlay-container rounded-lg shadow-lg">
-                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010469.jpg" alt="Party with Dynamic Lighting and DJ Equipment" class="w-full h-full object-cover rounded-lg">
-                    <div class="image-overlay">Vibrant Party Atmosphere</div>
-                </div>
-                <!-- Image 8: Outdoor dancing, daytime -->
-                <div class="image-overlay-container rounded-lg shadow-lg">
-                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010478.jpg" alt="Outdoor Celebration with Guests Dancing" class="w-full h-full object-cover rounded-lg">
-                    <div class="image-overlay">Daytime Outdoor Fun</div>
-                </div>
-                <div class="image-overlay-container rounded-lg shadow-lg">
-                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010470.jpg" alt="Indoor Dance Party with Blue Lighting" class="w-full h-full object-cover rounded-lg">
-                    <div class="image-overlay">Electrifying Indoor Dance Floor</div>
-                </div>
-                <div class="image-overlay-container rounded-lg shadow-lg">
-                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010471.jpg" alt="Kids Dancing Happily at Event" class="w-full h-full object-cover rounded-lg">
-                    <div class="image-overlay">Kids Having a Blast!</div>
-                </div>
-                <!-- New 10 Images -->
-                <div class="image-overlay-container rounded-lg shadow-lg">
-                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010468.jpg" alt="Large Ballroom Event with Dance Circle" class="w-full h-full object-cover rounded-lg">
-                    <div class="image-overlay">Grand Ballroom Celebration</div>
-                </div>
-                <div class="image-overlay-container rounded-lg shadow-lg">
-                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010466.jpg" alt="Lively Dance Floor with Party Lights" class="w-full h-full object-cover rounded-lg">
-                    <div class="image-overlay">High-Energy Dance Party</div>
-                </div>
-                <div class="image-overlay-container rounded-lg shadow-lg">
-                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010465.jpg" alt="Bride Holding Bouquet on Dance Floor" class="w-full h-full object-cover rounded-lg">
-                    <div class="image-overlay">Happy Bride on the Dance Floor</div>
-                </div>
-                <div class="image-overlay-container rounded-lg shadow-lg">
-                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010467.jpg" alt="Couple Dancing at Wedding Reception" class="w-full h-full object-cover rounded-lg">
-                    <div class="image-overlay">Romantic Wedding Dance</div>
-                </div>
-                <div class="image-overlay-container rounded-lg shadow-lg">
-                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010460.jpg" alt="Guest Being Lifted on Dance Floor" class="w-full h-full object-cover rounded-lg">
-                    <div class="image-overlay">Exciting Party Moments</div>
-                </div>
-                <div class="image-overlay-container rounded-lg shadow-lg">
-                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010459.jpg" alt="Guests Dancing and Having Fun Indoors" class="w-full h-full object-cover rounded-lg">
-                    <div class="image-overlay">Guests Enjoying the Music</div>
-                </div>
-                <div class="image-overlay-container rounded-lg shadow-lg">
-                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010461.jpg" alt="Two Women Dancing and Laughing" class="w-full h-full object-cover rounded-lg">
-                    <div class="image-overlay">Friends on the Dance Floor</div>
-                </div>
-                <div class="image-overlay-container rounded-lg shadow-lg">
-                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010463.jpg" alt="People Dancing in a Lively Indoor Setting" class="w-full h-full object-cover rounded-lg">
-                    <div class="image-overlay">Vibrant Indoor Party</div>
-                </div>
-                <div class="image-overlay-container rounded-lg shadow-lg">
-                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010464.jpg" alt="Guests Dancing with Hands Up" class="w-full h-full object-cover rounded-lg">
-                    <div class="image-overlay">Hands in the Air!</div>
-                </div>
-                <div class="image-overlay-container rounded-lg shadow-lg">
-                    <img src="https://raw.githubusercontent.com/your-username/bilingual-dj-site/main/images/1000010462.jpg" alt="Guests Dancing and Enjoying the Music" class="w-full h-full object-cover rounded-lg">
-                    <div class="image-overlay">Joyful Dance Moves</div>
-                </div>
+                <!-- Images are now clickable to open in a modal -->
+                <img src="https://raw.githubusercontent.com/Bilingualdj/Bilingualdiscjockey.com/main/images/012.JPG" alt="DJ performing with lights" class="w-full h-full object-cover rounded-lg shadow-lg cursor-pointer gallery-image">
+                <img src="https://raw.githubusercontent.com/Bilingualdj/Bilingualdiscjockey.com/main/images/016.JPG" alt="DJ playing music for a dance crowd" class="w-full h-full object-cover rounded-lg shadow-lg cursor-pointer gallery-image">
+                <img src="https://raw.githubusercontent.com/Bilingualdj/Bilingualdiscjockey.com/main/images/057.JPG" alt="Couple dancing at a wedding" class="w-full h-full object-cover rounded-lg shadow-lg cursor-pointer gallery-image">
+                <img src="https://raw.githubusercontent.com/Bilingualdj/Bilingualdiscjockey.com/main/images/100.JPG" alt="Guests dancing and having fun" class="w-full h-full object-cover rounded-lg shadow-lg cursor-pointer gallery-image">
+                <img src="https://raw.githubusercontent.com/Bilingualdj/Bilingualdiscjockey.com/main/images/102.JPG" alt="Happy couple on the dance floor" class="w-full h-full object-cover rounded-lg shadow-lg cursor-pointer gallery-image">
+                <img src="https://raw.githubusercontent.com/Bilingualdj/Bilingualdiscjockey.com/main/images/104.JPG" alt="DJ setup with colorful lights" class="w-full h-full object-cover rounded-lg shadow-lg cursor-pointer gallery-image">
+                <img src="https://raw.githubusercontent.com/Bilingualdj/Bilingualdiscjockey.com/main/images/258s.jpg" alt="Outdoor party at sunset" class="w-full h-full object-cover rounded-lg shadow-lg cursor-pointer gallery-image">
+                <img src="https://raw.githubusercontent.com/Bilingualdj/Bilingualdiscjockey.com/main/images/DSCN0083.JPG" alt="Guests dancing in a line" class="w-full h-full object-cover rounded-lg shadow-lg cursor-pointer gallery-image">
+                <img src="https://raw.githubusercontent.com/Bilingualdj/Bilingualdiscjockey.com/main/images/DSCN0615.JPG" alt="Guests with hands in the air" class="w-full h-full object-cover rounded-lg shadow-lg cursor-pointer gallery-image">
+                <img src="https://raw.githubusercontent.com/Bilingualdj/Bilingualdiscjockey.com/main/images/DSCN0672.JPG" alt="Joyful dance moves" class="w-full h-full object-cover rounded-lg shadow-lg cursor-pointer gallery-image">
+                <img src="https://raw.githubusercontent.com/Bilingualdj/Bilingualdiscjockey.com/main/images/hi1lwce9.png" alt="Couple's first dance" class="w-full h-full object-cover rounded-lg shadow-lg cursor-pointer gallery-image">
+                <img src="https://raw.githubusercontent.com/Bilingualdj/Bilingualdiscjockey.com/main/images/o.jpg" alt="Crowd gathered for a party" class="w-full h-full object-cover rounded-lg shadow-lg cursor-pointer gallery-image">
+                <img src="https://raw.githubusercontent.com/Bilingualdj/Bilingualdiscjockey.com/main/images/orzmog0p.png" alt="Happy guests on the dance floor" class="w-full h-full object-cover rounded-lg shadow-lg cursor-pointer gallery-image">
+                <img src="https://raw.githubusercontent.com/Bilingualdj/Bilingualdiscjockey.com/main/images/pnj6onno.png" alt="Two guests dancing together" class="w-full h-full object-cover rounded-lg shadow-lg cursor-pointer gallery-image">
+                <img src="https://raw.githubusercontent.com/Bilingualdj/Bilingualdiscjockey.com/main/images/sbrl47ci.png" alt="Guests celebrating at a party" class="w-full h-full object-cover rounded-lg shadow-lg cursor-pointer gallery-image">
+                <img src="https://raw.githubusercontent.com/Bilingualdj/Bilingualdiscjockey.com/main/images/xnt13w1u.png" alt="Guests taking a selfie at a party" class="w-full h-full object-cover rounded-lg shadow-lg cursor-pointer gallery-image">
+                <img src="https://raw.githubusercontent.com/Bilingualdj/Bilingualdiscjockey.com/main/images/001.JPG" alt="DJ mixing music at an event" class="w-full h-full object-cover rounded-lg shadow-lg cursor-pointer gallery-image">
+                <img src="https://raw.githubusercontent.com/Bilingualdj/Bilingualdiscjockey.com/main/images/081.JPG" alt="Wedding ceremony setup" class="w-full h-full object-cover rounded-lg shadow-lg cursor-pointer gallery-image">
+                <img src="https://raw.githubusercontent.com/Bilingualdj/Bilingualdiscjockey.com/main/images/20544044_xl.jpg" alt="A lively ballroom event" class="w-full h-full object-cover rounded-lg shadow-lg cursor-pointer gallery-image">
+                <img src="https://raw.githubusercontent.com/Bilingualdj/Bilingualdiscjockey.com/main/images/054.JPG" alt="Couple with friends at an event" class="w-full h-full object-cover rounded-lg shadow-lg cursor-pointer gallery-image">
             </div>
         </div>
     </section>
@@ -494,7 +438,13 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Mobile Menu -->
+    <!-- The Modal -->
+    <div id="imageModal" class="modal">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <!-- JavaScript for Mobile Menu & Modal -->
     <script>
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const closeMenuButton = document.getElementById('close-menu-button');
@@ -517,6 +467,33 @@
                 });
             });
         });
+
+        // --- Image Modal Functionality ---
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+        const closeModal = document.getElementsByClassName("modal-close")[0];
+
+        // Get all images that should open the modal
+        const galleryImages = document.querySelectorAll(".gallery-image, .about-me-image");
+
+        galleryImages.forEach(img => {
+            img.addEventListener('click', function() {
+                modal.style.display = "flex";
+                modalImg.src = this.src;
+            });
+        });
+
+        // When the user clicks on (x), close the modal
+        closeModal.onclick = function() {
+            modal.style.display = "none";
+        };
+
+        // When the user clicks anywhere outside of the image, close the modal
+        modal.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        };
     </script>
 </body>
 </html>
