@@ -525,29 +525,22 @@
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             const formData = new FormData(form);
-            const data = Object.fromEntries(formData.entries());
             const formspreeEndpoint = form.action;
 
-            // Simple validation to ensure required fields are not empty
-            if (!data['First Name'] || !data['Last Name'] || !data['Event Type'] || !data['Event Location'] || !data['Event Date'] || !data['Email for Confirmation'] || !data['Message']) {
-                showMessage('Please fill out all required fields.', 'error');
-                return;
-            }
-
             try {
+                // The key change is here: we send the FormData object directly.
+                // This is a more robust way to submit forms to Formspree.
                 const response = await fetch(formspreeEndpoint, {
                     method: 'POST',
-                    headers: {
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify(data)
+                    body: formData // Send the formData object directly
                 });
 
                 if (response.ok) {
                     showMessage('Thanks for your message! We will be in touch shortly.', 'success');
                     form.reset(); // Clear the form fields
                 } else {
-                    showMessage('Oops! There was an error submitting your form.', 'error');
+                    const errorText = await response.json(); // Read the error message from the response
+                    showMessage('Oops! An error occurred: ' + (errorText.error || 'Unknown error.'), 'error');
                 }
             } catch (error) {
                 showMessage('Network error. Please try again later.', 'error');
