@@ -91,6 +91,27 @@
             transition: 0.3s;
             cursor: pointer;
         }
+
+        /* --- Message Box Styles --- */
+        #message-box {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 16px 32px;
+            border-radius: 9999px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            font-weight: 600;
+            z-index: 1000;
+            transition: opacity 0.5s ease-in-out;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        #message-box.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -298,8 +319,7 @@
                     <p class="text-base md:text-lg text-gray-400 mb-6">
                         Reno, NV, Sparks, Lake Tahoe & All surrounding areas.
                     </p>
-                    <!-- IMPORTANT: The form action has been updated for Formspree -->
-                    <form action="https://formspree.io/f/mlekrjko" method="POST" class="space-y-4 md:space-y-6">
+                    <form id="contact-form" action="https://formspree.io/f/mlekrjko" method="POST" class="space-y-4 md:space-y-6">
                         <div>
                             <label for="first_name" class="block text-gray-300 text-sm md:text-base font-bold mb-2">First Name:</label>
                             <input type="text" id="first_name" name="First Name" required
@@ -443,8 +463,11 @@
         <span class="modal-close">&times;</span>
         <img class="modal-content" id="modalImage">
     </div>
+    
+    <!-- Message Box -->
+    <div id="message-box" role="alert"></div>
 
-    <!-- JavaScript for Mobile Menu & Modal -->
+    <!-- JavaScript for Mobile Menu, Modal & Form Submission -->
     <script>
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const closeMenuButton = document.getElementById('close-menu-button');
@@ -494,6 +517,62 @@
                 modal.style.display = "none";
             }
         };
+
+        // --- Form Submission with Fetch to prevent page redirect ---
+        const form = document.getElementById('contact-form');
+        const messageBox = document.getElementById('message-box');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+            const formspreeEndpoint = form.action;
+
+            // Simple validation to ensure required fields are not empty
+            if (!data['First Name'] || !data['Last Name'] || !data['Event Type'] || !data['Event Location'] || !data['Event Date'] || !data['Email for Confirmation'] || !data['Message']) {
+                showMessage('Please fill out all required fields.', 'error');
+                return;
+            }
+
+            try {
+                const response = await fetch(formspreeEndpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    showMessage('Thanks for your message! We will be in touch shortly.', 'success');
+                    form.reset(); // Clear the form fields
+                } else {
+                    showMessage('Oops! There was an error submitting your form.', 'error');
+                }
+            } catch (error) {
+                showMessage('Network error. Please try again later.', 'error');
+                console.error('Submission Error:', error);
+            }
+        });
+
+        function showMessage(text, type) {
+            messageBox.textContent = text;
+            messageBox.className = 'show'; // Show the message box
+
+            // Adjust colors based on message type
+            if (type === 'success') {
+                messageBox.style.backgroundColor = '#4dd0e1';
+                messageBox.style.color = '#1a1a2e';
+            } else {
+                messageBox.style.backgroundColor = '#ef4444';
+                messageBox.style.color = '#fff';
+            }
+
+            // Hide the message after 5 seconds
+            setTimeout(() => {
+                messageBox.classList.remove('show');
+            }, 5000);
+        }
     </script>
 </body>
 </html>
