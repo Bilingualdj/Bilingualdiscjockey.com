@@ -171,7 +171,7 @@
                 <div class="md:w-1/3 mb-8 md:mb-0">
                     <!-- Image of my father in the white tux holding the mic -->
                     <img src="https://raw.githubusercontent.com/Bilingualdj/Bilingualdiscjockey.com/main/images/picture of myself.JPG" alt="Felipe Leon, Bilingual Disc Jockey, holding microphone"
-                         class="w-full h-auto object-cover rounded-lg shadow-xl cursor-pointer about-me-image">
+                         class="w-full h-full object-cover rounded-lg shadow-xl cursor-pointer about-me-image">
                 </div>
                 <div class="md:w-2/3 text-left">
                     <p class="text-base md:text-xl text-gray-300 leading-relaxed mb-6">
@@ -521,30 +521,37 @@
         // --- Form Submission with Fetch to prevent page redirect ---
         const form = document.getElementById('contact-form');
         const messageBox = document.getElementById('message-box');
+        let isSubmitting = false;
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
+            if (isSubmitting) return;
+
+            isSubmitting = true;
             const formData = new FormData(form);
             const formspreeEndpoint = form.action;
 
             try {
-                // The key change is here: we send the FormData object directly.
-                // This is a more robust way to submit forms to Formspree.
                 const response = await fetch(formspreeEndpoint, {
                     method: 'POST',
-                    body: formData // Send the formData object directly
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json' // Tell Formspree to send back a JSON response
+                    }
                 });
 
                 if (response.ok) {
                     showMessage('Thanks for your message! We will be in touch shortly.', 'success');
                     form.reset(); // Clear the form fields
                 } else {
-                    const errorText = await response.json(); // Read the error message from the response
-                    showMessage('Oops! An error occurred: ' + (errorText.error || 'Unknown error.'), 'error');
+                    const data = await response.json();
+                    showMessage('Oops! An error occurred: ' + (data.error || 'Please check your form settings.'), 'error');
                 }
             } catch (error) {
                 showMessage('Network error. Please try again later.', 'error');
                 console.error('Submission Error:', error);
+            } finally {
+                isSubmitting = false;
             }
         });
 
